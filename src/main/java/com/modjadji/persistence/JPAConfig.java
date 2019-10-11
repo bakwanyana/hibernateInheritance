@@ -36,7 +36,7 @@ public class JPAConfig {
         em.setJpaVendorAdapter(vendorAdapter);
         em.setLoadTimeWeaver(loadTimeWeaver);
         em.setJpaProperties(hibernateProperties);
-        em.setPackagesToScan("com.modjadji.persistence.domain"); // auto-include @Entity annotated classes ; alternative to declaring PersistenceUnit via persistence.xml
+        em.setPackagesToScan("com.modjadji.domain"); // auto-include @Entity annotated classes ; alternative to declaring PersistenceUnit via persistence.xml
         return em;
     }
 
