@@ -6,8 +6,8 @@ public class Employee extends Person{
 
     private double salary;
 
-    public Employee(String idNumber, List<String> names, String surname, double salary) {
-        super(idNumber, names, surname);
+    public Employee(String idNumber, String name, String surname, double salary) {
+        super(idNumber, name, surname);
         setSalary(salary);
     }
 
