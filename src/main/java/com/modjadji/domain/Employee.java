@@ -1,11 +1,15 @@
 package com.modjadji.domain;
 
-import java.util.List;
-import java.util.Set;
+import javax.persistence.Entity;
 
+@Entity
 public class Employee extends Person{
 
     private double salary;
+
+    public Employee() {
+        super();
+    }
 
     public Employee(String idNumber, String name, String surname, double salary) {
         super(idNumber, name, surname);

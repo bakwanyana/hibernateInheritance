@@ -1,15 +1,28 @@
 package com.modjadji.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+@MappedSuperclass
 public class Person implements Serializable {
+
+    @Id
+    @Column(nullable = false, updatable = false, unique = true)
     private String idNumber;
+
+    @Column
     private String name;
+
+    @Column
     private String surname;
 
+    private static int count = 0;
+
     public Person() {
+        this(String.valueOf(count), "John", "Doe");
     }
 
     public Person(String idNumber, String name, String surname) {
