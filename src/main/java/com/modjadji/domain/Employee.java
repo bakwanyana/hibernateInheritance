@@ -1,6 +1,7 @@
 package com.modjadji.domain;
 
 import java.util.List;
+import java.util.Set;
 
 public class Employee extends Person{
 
