@@ -19,7 +19,7 @@ Cons:
 
 ### Table per class
 Each concrete class still gets persisted to its own table - using the @Inheritance  annotation with the InheritanceType.TABLE_PER_CLASS parameter achieves this.
-
+https://github.com/bakwanyana/hibernateInheritance/tree/tablePerClass
 
 Pros:
 * Unlike the previous example, bi-directional relationships can be established with the parent class
