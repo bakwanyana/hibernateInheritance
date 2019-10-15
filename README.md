@@ -58,3 +58,18 @@ Pros:
 
 Cons:
 * Performance knock when retrieving child entities due to required join
+
+## How to run
+I have various tests that illustrate the concept in each branch.
+You will have to configure your own datasource should you wish to see physical tables (I used postgres for this purpose at some point) -- see com.modjadji.persistence.JPAConfig for the configuration.
+
+In the project's root folder, run
+### "mvn test"
+
+### Dependencies
+* maven (https://maven.apache.org/install.html)
+* Java 8 (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* database driver (if not running the already configured in-memory database, H2)
+
+
+
