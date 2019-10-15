@@ -8,6 +8,7 @@ All examples are based on the following domain object inheritance: Employee and 
 ## Strategy Description
 ### Mapped Superclass
 The method here is to persist each concrete class to its own table while using the @MappedSuperclass for the parent class.
+https://github.com/bakwanyana/hibernateInheritance/tree/mappedSuperclass
 
 Pros:
 * Shared attributes amongst all child classes
