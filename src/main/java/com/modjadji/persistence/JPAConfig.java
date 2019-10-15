@@ -51,10 +51,22 @@ public class JPAConfig {
         return dataSource;
     }
 
+    /*postgres datasource configuration*/
+//    @Bean
+//    public DataSource dataSourcePostgres() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("org.postgresql.Driver");
+//        dataSource.setUrl("jdbc:postgresql://localhost:5432/jpatutdb");
+//        dataSource.setUsername("postgres");
+//        dataSource.setPassword("P@ssw0rd");
+//        return dataSource;
+//    }
+
     @Bean
     public JpaVendorAdapter vendorAdapter() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
+//        vendorAdapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect"); // uncomment for postgres
         vendorAdapter.setGenerateDdl(true); // generate tables
         vendorAdapter.setShowSql(true); // generated sql logging at INFO level
         return vendorAdapter;

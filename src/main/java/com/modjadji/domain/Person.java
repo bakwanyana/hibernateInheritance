@@ -1,13 +1,13 @@
 package com.modjadji.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-@MappedSuperclass
-public class Person implements Serializable {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Person implements Serializable {
 
     @Id
     @Column(nullable = false, updatable = false, unique = true)
@@ -18,6 +18,9 @@ public class Person implements Serializable {
 
     @Column
     private String surname;
+
+    @ManyToMany(mappedBy = "propertyOwners", fetch = FetchType.EAGER)
+    private Set<Property> properties;
 
     private static int count = 0;
 
@@ -53,5 +56,34 @@ public class Person implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Set<Property> getProperties() {
+        return properties;
+    }
+
+    public void addProperty(Property property){
+        if (property == null)
+            return;
+        initializeProperties();
+        this.properties.add(property);
+    }
+
+    public void removeProperty(Property property){
+        this.properties.remove(property);
+    }
+
+    private void initializeProperties(){
+        if (this.properties == null)
+            this.properties = new HashSet<Property>();
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "idNumber='" + idNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 }

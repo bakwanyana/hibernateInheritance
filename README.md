@@ -6,12 +6,13 @@ This is basically a summary of what that article had to offer, but coded up
 All examples are based on the following domain object inheritance: Employee and SelfEmployed classes both inherit from the Person class.
 
 ## Strategy Description
-### Mapped Superclass
-The method here is to persist each concrete class to its own table while using the @MappedSuperclass for the parent class.
+
+### Table per class
+Each concrete class still gets persisted to its own table - using the @Inheritance  annotation with the InheritanceType.TABLE_PER_CLASS parameter achieves this.
+
 
 Pros:
-* Shared attributes amongst all child classes
+* Unlike the previous example, bi-directional relationships can be established with the parent class
 
 Cons:
-* You cannot have an entity with a bi-directional relationship with any superclass (only unidirectional from superclass to another entity)
-* You cannot persist superclasses
+* Could lead to performance issues due to more complex queries that result from polymorphic queries
