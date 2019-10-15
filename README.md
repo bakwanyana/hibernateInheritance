@@ -9,7 +9,7 @@ All examples are based on the following domain object inheritance: Employee and 
 ### Mapped Superclass
 The method here is to persist each concrete class to its own table while using the @MappedSuperclass for the parent class.
 
-Repo: https://github.com/bakwanyana/hibernateInheritance/tree/mappedSuperclass
+Branch: https://github.com/bakwanyana/hibernateInheritance/tree/mappedSuperclass
 
 Pros:
 * Shared attributes amongst all child classes
@@ -21,7 +21,7 @@ Cons:
 ### Table per class
 Each concrete class still gets persisted to its own table - using the @Inheritance  annotation with the InheritanceType.TABLE_PER_CLASS parameter achieves this.
 
-Repo: https://github.com/bakwanyana/hibernateInheritance/tree/tablePerClass
+Branch: https://github.com/bakwanyana/hibernateInheritance/tree/tablePerClass
 
 Pros:
 * Unlike the previous example, bi-directional relationships can be established with the parent class
@@ -35,7 +35,7 @@ polymorphic queries (performance-wise), whereas the "table per class" approach i
 
 For Hibernate to know the object type it requires a "discriminator column". It gets defaulted to DTYPE should you not define one yourself in the superclass
 
-Repo: https://github.com/bakwanyana/hibernateInheritance/tree/singleTable
+Branch: https://github.com/bakwanyana/hibernateInheritance/tree/singleTable
 
 Pros:
 * Suited for inheritance: performance advantage over the single table strategy
@@ -43,3 +43,18 @@ Pros:
 Cons:
 * Null values can be written to attributes that aren't common to all classes in your inheritance tree so you cannot introduce
 null constraints on the DB
+
+### Joined
+A kind of combination between "single table" and "table per class" in that each entity gets persisted in its own class AND the
+superclass entity gets persisted as well
+
+All common attributes get persisted with the superclass entity and the child class specific attributes to the individual tables -  a join is required to
+consolidate all data associated with the child entities
+
+Branch: https://github.com/bakwanyana/hibernateInheritance/tree/joined
+
+Pros:
+* Greater data integrity than the single table strategy as you can introduce null constraints on attributes
+
+Cons:
+* Performance knock when retrieving child entities due to required join
