@@ -15,3 +15,13 @@ Pros:
 Cons:
 * You cannot have an entity with a bi-directional relationship with any superclass (only unidirectional from superclass to another entity)
 * You cannot persist superclasses
+
+### Table per class
+Each concrete class still gets persisted to its own table - using the @Inheritance  annotation with the InheritanceType.TABLE_PER_CLASS parameter achieves this.
+
+
+Pros:
+* Unlike the previous example, bi-directional relationships can be established with the parent class
+
+Cons:
+* Could lead to performance issues due to more complex queries that result from polymorphic queries
