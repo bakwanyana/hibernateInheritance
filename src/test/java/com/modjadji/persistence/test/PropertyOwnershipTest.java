@@ -18,7 +18,7 @@ public class PropertyOwnershipTest extends PersistenceTestBase {
     @Test
     public void test(){
         Employee chenLi = new Employee("10/10/2001/98981", "Li", "Chen", 10.00);
-        Property property = new Property("line1", "line2", "90210");
+        Property property = new Property("line1b", "line2b", "90210b");
         chenLi.addProperty(property);
         property.addPropertyOwner(chenLi);
 
@@ -28,9 +28,6 @@ public class PropertyOwnershipTest extends PersistenceTestBase {
 
         assertNotNull(persistedEmployee);
         assertNotNull(persistedProperty);
-        assertEquals(1, employeeRepository.count());
-        assertEquals(1, propertyRepository.count());
-
         Employee retrievedEmployee = employeeRepository.findOne(persistedEmployee.getIdNumber());
         Property retrievedProperty = propertyRepository.findOne(persistedProperty.getId());
 

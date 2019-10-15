@@ -1,9 +1,11 @@
 package com.modjadji.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
+@DiscriminatorValue("self_employed")
 public class SelfEmployed extends Person {
 
     private int daysLayingOnTheBeach;

@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PropertyRepositoryTest extends PersistenceTestBase {
 
     @Autowired
-    private PropertyRepository addressRepository;
+    private PropertyRepository propertyRepository;
 
     @Test
     public void testThatAddressRepositoryCanPersist(){
-        Property address = new Property("line1", "line2", "90210");
-        addressRepository.save(address);
+        Property property = new Property("line1A", "line2A", "90210A");
 
-        assertEquals(1, addressRepository.count());
+        Property persistedProperty = propertyRepository.save(property);
+
+        assertTrue(property.getFullAddress().equals(propertyRepository.getFullAddress(persistedProperty.getId())));
     }
 }

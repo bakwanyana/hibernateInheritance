@@ -7,12 +7,15 @@ All examples are based on the following domain object inheritance: Employee and 
 
 ## Strategy Description
 
-### Table per class
-Each concrete class still gets persisted to its own table - using the @Inheritance  annotation with the InheritanceType.TABLE_PER_CLASS parameter achieves this.
+### Single Table
+In this case, the entire inheritance tree is persisted to a single table. Note that the site mentions that this approach is best suited for
+polymorphic queries (performance-wise), whereas the "table per class" approach is sited as the worst.
 
+For Hibernate to know the object type it requires a "discriminator column". It gets defaulted to DTYPE should you not define one yourself in the superclass
 
 Pros:
-* Unlike the previous example, bi-directional relationships can be established with the parent class
+* Suited for inheritance: performance advantage over the single table strategy
 
 Cons:
-* Could lead to performance issues due to more complex queries that result from polymorphic queries
+* Null values can be written to attributes that aren't common to all classes in your inheritance tree so you cannot introduce
+null constraints on the DB

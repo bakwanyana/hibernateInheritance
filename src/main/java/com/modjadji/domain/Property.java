@@ -78,6 +78,16 @@ public class Property {
         return id;
     }
 
+    public String getFullAddress(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(line1);
+        stringBuilder.append(",");
+        stringBuilder.append(line2);
+        stringBuilder.append(",");
+        stringBuilder.append(areaCode);
+        return stringBuilder.toString();
+    }
+
     @Override
     public String toString() {
         return "Property{" +

@@ -1,8 +1,10 @@
 package com.modjadji.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("employee")
 public class Employee extends Person{
 
     private double salary;

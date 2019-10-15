@@ -15,8 +15,9 @@ public class EmployeeRepositoryTest extends PersistenceTestBase {
     public void testThatEmployeeRepositoryCanPersist(){
         Employee employee = new Employee("100101","Joe","Soap",10.00);
 
-        employeeRepository.save(employee);
+        Employee persistedEmployee = employeeRepository.save(employee);
 
         assertEquals(1, employeeRepository.count());
+        assertTrue(persistedEmployee.getIdNumber().equals(employeeRepository.findOne(persistedEmployee.getIdNumber()).getIdNumber()));
     }
 }

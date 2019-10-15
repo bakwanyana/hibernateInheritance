@@ -2,6 +2,7 @@ package com.modjadji.persistence.test;
 
 import com.modjadji.domain.SelfEmployed;
 import com.modjadji.persistence.repository.SelfEmployedRepository;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import static junit.framework.TestCase.assertTrue;
@@ -14,11 +15,10 @@ public class SelfEmployedRepositoryTest extends PersistenceTestBase {
 
     @Test
     public void testThatEmployeeRepositoryCanPersist(){
-        SelfEmployed employee = new SelfEmployed("100101","Joe","Soap",10);
+        SelfEmployed employee = new SelfEmployed("100101A","Joe","Soap",10);
 
         SelfEmployed persistedSelfEmployee = selfEmployedRepository.save(employee);
 
-        assertEquals(1, selfEmployedRepository.count());
-        assertTrue((employee.getName() + " " + employee.getSurname()).equalsIgnoreCase(selfEmployedRepository.getFullName("100101")));
+        assertTrue((employee.getName() + " " + employee.getSurname()).equalsIgnoreCase(selfEmployedRepository.getFullName(persistedSelfEmployee.getIdNumber())));
     }
 }
